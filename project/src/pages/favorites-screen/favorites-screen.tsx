@@ -1,4 +1,4 @@
-export default function FavoriteScreen(): JSX.Element {
+export default function FavoritesScreen(): JSX.Element {
     return (
 <main className="page__main page__main--favorites">
         <div className="page__favorites-container container">
@@ -38,7 +38,7 @@ export default function FavoriteScreen(): JSX.Element {
                       </div>
                       <div className="place-card__rating rating">
                         <div className="place-card__stars rating__stars">
-                          <span style="width: 100%"></span>
+                          <span style={{ width: '80%' }}></span>
                           <span className="visually-hidden">Rating</span>
                         </div>
                       </div>
@@ -70,7 +70,7 @@ export default function FavoriteScreen(): JSX.Element {
                       </div>
                       <div className="place-card__rating rating">
                         <div className="place-card__stars rating__stars">
-                          <span style="width: 80%"></span>
+                          <span style={{ width: '80%' }}></span>
                           <span className="visually-hidden">Rating</span>
                         </div>
                       </div>
@@ -113,7 +113,7 @@ export default function FavoriteScreen(): JSX.Element {
                       </div>
                       <div className="place-card__rating rating">
                         <div className="place-card__stars rating__stars">
-                          <span style="width: 100%"></span>
+                          <span style={{ width: '100%' }}></span>
                           <span className="visually-hidden">Rating</span>
                         </div>
                       </div>
