@@ -1,13 +1,17 @@
 import {Helmet} from 'react-helmet-async';
-import Card from '../../components/card/card';
 import Logo from '../../components/logo/logo';
 import User from '../../components/user/user';
-
+import { OfferType } from '../../types/offers';
+import OffersList from '../../components/offer-list/offer-list';
 
 type MainScreenProps = {
     offersCount: number;
+    offersList: OfferType[];
   }
-function MainScreen({offersCount}: MainScreenProps): JSX.Element {
+
+
+function MainScreen({offersCount, offersList}: MainScreenProps): JSX.Element {
+
   return (
     <section className="main">
       <Helmet>
@@ -80,7 +84,10 @@ function MainScreen({offersCount}: MainScreenProps): JSX.Element {
                 </ul>
               </form>
               <div className="cities__places-list places__list tabs__content">
-                {[...Array(offersCount).keys()].map((i) => <Card key={i} />)}
+                <OffersList
+                  offersList={offersList}
+                  offersCount={offersCount}
+                />
               </div>
             </section>
             <div className="cities__right-section">
