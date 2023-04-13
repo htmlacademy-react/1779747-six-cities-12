@@ -16,11 +16,11 @@ export type Host = {
     name: string;
     };
 
-export type OfferType = {
+export type Offer = {
     bedrooms: number;
     city: City;
     description: string;
-    goods: [string];
+    goods: string[];
     host: Host;
     id: number;
     images: [string];

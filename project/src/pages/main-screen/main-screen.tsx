@@ -1,12 +1,13 @@
 import {Helmet} from 'react-helmet-async';
 import Logo from '../../components/logo/logo';
 import User from '../../components/user/user';
-import { OfferType } from '../../types/offers';
+import { Offer } from '../../types/offers';
 import OffersList from '../../components/offer-list/offer-list';
+import Map from '../../components/map/map';
 
 type MainScreenProps = {
     offersCount: number;
-    offersList: OfferType[];
+    offersList: Offer[];
   }
 
 
@@ -67,7 +68,7 @@ function MainScreen({offersCount, offersList}: MainScreenProps): JSX.Element {
           <div className="cities__places-container container">
             <section className="cities__places places">
               <h2 className="visually-hidden">Places</h2>
-              <b className="places__found">312 places to stay in Amsterdam</b>
+              <b className="places__found">{offersCount} places to stay in Amsterdam</b>
               <form className="places__sorting" action="#" method="get">
                 <span className="places__sorting-caption">Sort by</span>
                 <span className="places__sorting-type" tabIndex={0}>
@@ -91,7 +92,11 @@ function MainScreen({offersCount, offersList}: MainScreenProps): JSX.Element {
               </div>
             </section>
             <div className="cities__right-section">
-              <section className="cities__map map"></section>
+              <Map
+                city={offersList[0].city}
+                points={offersList}
+                className='cities__map'
+              />
             </div>
           </div>
         </div>

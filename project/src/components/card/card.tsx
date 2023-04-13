@@ -1,17 +1,17 @@
 import { Link } from 'react-router-dom';
 import { AppRoute } from '../../const';
-import { OfferType } from '../../types/offers';
+import { Offer } from '../../types/offers';
 
 type CardProps = {
-offer: OfferType;
-setMouseHandler: (id: number | null) => void;
+offer: Offer;
+onMouseOver: (activeCard: number) => void;
 }
 
-export default function Card({offer, setMouseHandler}: CardProps): JSX.Element {
+export default function Card({offer, onMouseOver}: CardProps): JSX.Element {
 
   const {isPremium, id, images, title, price, rating, type } = offer;
   return (
-    <article className="cities__card place-card" onMouseOver={() => setMouseHandler(id)}>
+    <article className="cities__card place-card" onMouseOver={() => onMouseOver(id)}>
       {isPremium &&
         <div className="place-card__mark">
           <span>Premium</span>

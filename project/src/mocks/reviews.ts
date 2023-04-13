@@ -15,8 +15,6 @@ export const reviews: Reviews[] = [
       isPro: false,
       name: 'Oliver.conner'
     }},
-
-
 ];
 
 

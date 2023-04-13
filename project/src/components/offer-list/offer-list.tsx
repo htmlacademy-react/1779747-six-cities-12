@@ -1,14 +1,14 @@
 import { useState } from 'react';
 import Card from '../card/card';
-import { OfferType } from '../../types/offers';
+import { Offer } from '../../types/offers';
 
     interface Props {
       offersCount: number;
-      offersList: OfferType[];
+      offersList: Offer[];
     }
 
 export default function OffersList({ offersList, offersCount }: Props) {
-  const [, setMouseHandler] = useState <number | null> (null);
+  const [, setCardActive] = useState <number | null> (null);
 
   return (
     <div className="cities__places-list places__list tabs__content">
@@ -16,7 +16,7 @@ export default function OffersList({ offersList, offersCount }: Props) {
         <Card
           key={i.id}
           offer={i}
-          setMouseHandler={setMouseHandler}
+          onMouseOver={setCardActive}
         />
       ))}
     </div>
