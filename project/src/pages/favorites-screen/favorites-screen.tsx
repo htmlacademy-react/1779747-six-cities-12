@@ -1,11 +1,11 @@
 import {Helmet} from 'react-helmet-async';
 import Logo from '../../components/logo/logo';
 import User from '../../components/user/user';
-import { OfferType } from '../../types/offers';
+import { Offer } from '../../types/offers';
 import FavoritesCard from '../../components/favorites-card/favorites-card';
 
 type FavoritesScreenProps = {
-  offersList: OfferType[];
+  offersList: Offer[];
 }
 
 export default function FavoritesScreen({offersList}: FavoritesScreenProps): JSX.Element {
@@ -42,7 +42,7 @@ export default function FavoritesScreen({offersList}: FavoritesScreenProps): JSX
                     </div>
                   </div>
                   <div className="favorites__places">
-                    {favoriteSortList.filter((offer) => offer.city.name === city).map((i) => <FavoritesCard key={i.id} offer={i}/>)}
+                    {favoriteSortList.filter((offer) => offer.city.name === city).map((offer) => <FavoritesCard key={offer.id} offer={offer}/>)}
                   </div>
                 </li>
               ))};

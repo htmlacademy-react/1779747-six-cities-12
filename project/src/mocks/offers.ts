@@ -1,14 +1,14 @@
-import { OfferType } from '../types/offers';
+import { Offer } from '../types/offers';
 
 const AVATAR_URL = 'https://i.pravatar.cc/128';
 
-export const offers: OfferType[] = [
+export const offers: Offer[] = [
   {
     bedrooms: 4,
     city: {
       location: {
-        latitude: 52.370216,
-        longitude: 4.895168,
+        latitude: 52.3909553943508 ,
+        longitude: 4.85309666406198,
         zoom: 10,
       },
       name: 'Amsterdam',
@@ -30,8 +30,9 @@ export const offers: OfferType[] = [
     isFavorite: true,
     isPremium: true,
     location: {
-      latitude: 52.35514938496378,
-      longitude: 4.673877537499948,
+
+      latitude: 52.370216,
+      longitude: 4.895168,
       zoom: 8
     },
     'maxAdults': 4,
@@ -45,11 +46,11 @@ export const offers: OfferType[] = [
     bedrooms: 3,
     city: {
       location: {
-        latitude: 48.50,
-        longitude: 2.20,
+        latitude: 52.3609553943508,
+        longitude: 4.85309666406198,
         zoom: 7,
       },
-      name: 'Paris',
+      name: 'Amsterdam',
     },
     description: 'Paris is a unique place where you can have an exciting time without doing anything specia.',
     goods: [
@@ -68,8 +69,8 @@ export const offers: OfferType[] = [
     isFavorite: false,
     isPremium: false,
     location: {
-      latitude: 48.50,
-      longitude: 2.21,
+      latitude: 52.370216,
+      longitude: 4.895168,
       zoom: 8
     },
     'maxAdults': 4,
@@ -83,11 +84,11 @@ export const offers: OfferType[] = [
     bedrooms: 4,
     city: {
       location: {
-        latitude: 50.5632,
-        longitude: 6.5720,
+        latitude: 52.3909553943508,
+        longitude: 4.929309666406198,
         zoom: 10,
       },
-      name: 'Cologne',
+      name: 'Amsterdam',
     },
     description: 'As an ancient and large city, Cologne has many historical sights.',
     goods: [
@@ -106,8 +107,8 @@ export const offers: OfferType[] = [
     isFavorite: true,
     isPremium: false,
     location: {
-      latitude: 50.5632,
-      longitude: 6.5722,
+      latitude: 52.370216,
+      longitude: 4.895168,
       zoom: 8
     },
     'maxAdults': 4,
@@ -121,8 +122,8 @@ export const offers: OfferType[] = [
     bedrooms: 1,
     city: {
       location: {
-        latitude: 50.5048,
-        longitude: 4.2109,
+        latitude: 52.3809553943508,
+        longitude: 4.939309666406198,
         zoom: 10,
       },
       name: 'Amsterdam',
@@ -144,8 +145,8 @@ export const offers: OfferType[] = [
     isFavorite: true,
     isPremium: true,
     location: {
-      latitude: 50.5048,
-      longitude: 4.2108,
+      latitude: 52.370216,
+      longitude: 4.895168,
       zoom: 8
     },
     maxAdults: 4,

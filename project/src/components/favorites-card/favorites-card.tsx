@@ -1,9 +1,9 @@
 import { Link } from 'react-router-dom';
 import { AppRoute } from '../../const';
-import { OfferType } from '../../types/offers';
+import { Offer } from '../../types/offers';
 
 type FavoritesCardProps = {
-offer: OfferType;
+offer: Offer;
 }
 
 export default function FavoritesCard({offer}: FavoritesCardProps): JSX.Element {
