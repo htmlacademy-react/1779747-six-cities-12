@@ -1,10 +1,10 @@
 import { Reviews } from '../../types/reviews';
 import dayjs from 'dayjs';
 
-type ReviewsItemProps = {
+type ReviewItemProps = {
     review: Reviews;
 }
-export default function ReviewsItem ({review}: ReviewsItemProps){
+export default function ReviewsItem ({review}: ReviewItemProps){
   const {comment, date, rating, user} = review;
 
   return (

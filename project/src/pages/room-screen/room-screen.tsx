@@ -1,4 +1,5 @@
 import {Helmet} from 'react-helmet-async';
+import {Link} from 'react-router-dom';
 import Logo from '../../components/logo/logo';
 import User from '../../components/user/user';
 import CommentsForm from '../../components/commets-form/comments-form';
@@ -17,8 +18,10 @@ type RoomScreenProps = {
 
 export default function RoomScreen({offers, reviews, nearbyOffers}: RoomScreenProps): JSX.Element {
   const { id } = useParams();
-  const currentPointOffer = offers.find((offer) => offer.id === Number(id)) as Offer;
-
+  const currentPointOffer: Offer | undefined = offers.find((offer) => offer.id === Number(id));
+  if (currentPointOffer === undefined) {
+    return <Link className="header__logo-link" to="*"></Link>;
+  }
 
   return (
     <section className="room">
