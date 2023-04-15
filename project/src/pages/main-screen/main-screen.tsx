@@ -2,16 +2,16 @@ import {Helmet} from 'react-helmet-async';
 import Logo from '../../components/logo/logo';
 import User from '../../components/user/user';
 import { Offer } from '../../types/offers';
-import OffersList from '../../components/offer-list/offer-list';
+import OffersList from '../../components/offers-list/offers-list';
 import Map from '../../components/map/map';
 
 type MainScreenProps = {
     offersCount: number;
-    offersList: Offer[];
+    offers: Offer[];
   }
 
 
-function MainScreen({offersCount, offersList}: MainScreenProps): JSX.Element {
+function MainScreen({offersCount, offers}: MainScreenProps): JSX.Element {
 
   return (
     <section className="main">
@@ -86,15 +86,16 @@ function MainScreen({offersCount, offersList}: MainScreenProps): JSX.Element {
               </form>
               <div className="cities__places-list places__list tabs__content">
                 <OffersList
-                  offersList={offersList}
+                  offersList={offers}
                   offersCount={offersCount}
+                  className='cities'
                 />
               </div>
             </section>
             <div className="cities__right-section">
               <Map
-                city={offersList[0].city}
-                points={offersList}
+                city={offers[0].city}
+                points={offers}
                 className='cities__map'
               />
             </div>

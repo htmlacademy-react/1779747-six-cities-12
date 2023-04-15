@@ -5,12 +5,12 @@ import { Offer } from '../../types/offers';
 import FavoritesCard from '../../components/favorites-card/favorites-card';
 
 type FavoritesScreenProps = {
-  offersList: Offer[];
+  offers: Offer[];
 }
 
-export default function FavoritesScreen({offersList}: FavoritesScreenProps): JSX.Element {
+export default function FavoritesScreen({offers}: FavoritesScreenProps): JSX.Element {
 
-  const favoriteSortList = offersList.filter((offer) => offer.isFavorite);
+  const favoriteSortList = offers.filter((offer) => offer.isFavorite);
   const citiesSortLIst = Array.from(new Set(favoriteSortList.map((i) => i.city.name)));
 
   return (

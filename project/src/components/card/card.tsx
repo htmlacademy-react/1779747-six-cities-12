@@ -4,19 +4,20 @@ import { Offer } from '../../types/offers';
 
 type CardProps = {
 offer: Offer;
+className: string;
 onMouseOver: (activeCard: number) => void;
 }
 
-export default function Card({offer, onMouseOver}: CardProps): JSX.Element {
+export default function Card({offer, className, onMouseOver}: CardProps): JSX.Element {
 
   const {isPremium, id, images, title, price, rating, type } = offer;
   return (
-    <article className="cities__card place-card" onMouseOver={() => onMouseOver(id)}>
+    <article className={`${className}__card place-card`} onMouseOver={() => onMouseOver(id)}>
       {isPremium &&
         <div className="place-card__mark">
           <span>Premium</span>
         </div> }
-      <div className="cities__image-wrapper place-card__image-wrapper">
+      <div className={`${className}__image-wrapper place-card__image-wrapper`}>
         <Link key={id} to={AppRoute.Room.replace(':id', `${id}`)}>
           <img className="place-card__image" src={images[0]} width="260" height="200" alt={title} />
         </Link>
