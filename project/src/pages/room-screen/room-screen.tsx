@@ -1,12 +1,11 @@
 import {Helmet} from 'react-helmet-async';
-import {Link} from 'react-router-dom';
 import Logo from '../../components/logo/logo';
 import User from '../../components/user/user';
 import CommentsForm from '../../components/commets-form/comments-form';
 import ReviewsList from '../../components/reviews-list/reviews-list';
 import { Reviews } from '../../types/reviews';
 import { Offer } from '../../types/offers';
-import { useParams } from 'react-router-dom';
+import { Navigate, useParams } from 'react-router-dom';
 import Map from '../../components/map/map';
 import OffersList from '../../components/offers-list/offers-list';
 
@@ -18,9 +17,9 @@ type RoomScreenProps = {
 
 export default function RoomScreen({offers, reviews, nearbyOffers}: RoomScreenProps): JSX.Element {
   const { id } = useParams();
-  const currentPointOffer: Offer | undefined = offers.find((offer) => offer.id === Number(id));
+  const currentPointOffer = offers.find((offer) => offer.id === Number(id));
   if (currentPointOffer === undefined) {
-    return <Link className="header__logo-link" to="*"></Link>;
+    return <Navigate to="page-not-found"/>;
   }
 
   return (

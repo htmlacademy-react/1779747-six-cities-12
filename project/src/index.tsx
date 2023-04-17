@@ -1,9 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import {Provider} from 'react-redux';
 import App from './components/app/app';
 import { offers } from './mocks/offers';
 import { reviews } from './mocks/reviews';
 import { nearbyOffers } from './mocks/nearbyOffers';
+import { store } from './store';
 
 
 const Setting = {
@@ -16,11 +18,13 @@ const root = ReactDOM.createRoot(
 
 root.render(
   <React.StrictMode>
-    <App
-      offersCount= {Setting.OffersCount}
-      offers = {offers}
-      reviews = {reviews}
-      nearbyOffers = {nearbyOffers}
-    />
+    <Provider store={store}>
+      <App
+        offersCount= {Setting.OffersCount}
+        offers = {offers}
+        reviews = {reviews}
+        nearbyOffers = {nearbyOffers}
+      />
+    </Provider>
   </React.StrictMode>,
 );
