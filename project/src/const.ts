@@ -1,3 +1,5 @@
+export const OFFERS_COUNT = 4;
+
 export enum AppRoute {
     Main = '/',
     Login = '/login',
@@ -10,3 +12,14 @@ export enum AuthorizationStatus {
     NoAuth = 'NO_AUTH',
     Unknown = 'UNKNOWN',
   }
+
+export const CITIES = [
+  'Paris',
+  'Cologne',
+  'Brussels',
+  'Amsterdam',
+  'Hamburg',
+  'Dusseldorf'
+];
+
+

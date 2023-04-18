@@ -1,15 +1,16 @@
 import { useState } from 'react';
+import { useAppSelector } from '../../hooks';
 import Card from '../card/card';
 import { Offer } from '../../types/offers';
 
     type OfferListProps = {
-      offersCount?: number;
       offersList: Offer[];
       className: string;
     }
 
-export default function OffersList({ offersList, offersCount, className }: OfferListProps) {
+export default function OffersList({ offersList, className }: OfferListProps) {
   const [, setCardActive] = useState <number | null> (null);
+  const offersCount = useAppSelector((state) => state.offersCount);
 
   return (
     <>

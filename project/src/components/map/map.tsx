@@ -33,8 +33,8 @@ export default function Map({ className, city, points, selectedPoint }: MapProps
     if (map) {
       points.forEach((point) => {
         const marker = new Marker({
-          lat: point.city.location.latitude,
-          lng: point.city.location.longitude
+          lat: point.location.latitude,
+          lng: point.location.longitude
         });
 
         marker
@@ -47,6 +47,10 @@ export default function Map({ className, city, points, selectedPoint }: MapProps
       });
     }
   }, [map, points, selectedPoint]);
+
+  useEffect(() => {
+    map?.setView({lat: city.location.latitude, lng: city.location.longitude});
+  }, [city, map]);
 
   return (
     <section

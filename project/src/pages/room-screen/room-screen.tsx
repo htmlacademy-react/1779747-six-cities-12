@@ -1,26 +1,22 @@
 import {Helmet} from 'react-helmet-async';
-import {Link} from 'react-router-dom';
+import { useAppSelector } from '../../hooks';
+import { Navigate, useParams } from 'react-router-dom';
 import Logo from '../../components/logo/logo';
 import User from '../../components/user/user';
 import CommentsForm from '../../components/commets-form/comments-form';
 import ReviewsList from '../../components/reviews-list/reviews-list';
-import { Reviews } from '../../types/reviews';
-import { Offer } from '../../types/offers';
-import { useParams } from 'react-router-dom';
 import Map from '../../components/map/map';
 import OffersList from '../../components/offers-list/offers-list';
 
-type RoomScreenProps = {
-  offers: Offer[];
-  reviews: Reviews[];
-  nearbyOffers: Offer[];
-}
 
-export default function RoomScreen({offers, reviews, nearbyOffers}: RoomScreenProps): JSX.Element {
+export default function RoomScreen(): JSX.Element {
+  const offers = useAppSelector((state) => state.offers);
+  const reviews = useAppSelector((state) => state.reviews);
+  const nearbyOffers = useAppSelector((state) => state.nearbyOffers);
   const { id } = useParams();
-  const currentPointOffer: Offer | undefined = offers.find((offer) => offer.id === Number(id));
+  const currentPointOffer = offers.find((offer) => offer.id === Number(id));
   if (currentPointOffer === undefined) {
-    return <Link className="header__logo-link" to="*"></Link>;
+    return <Navigate to="page-not-found"/>;
   }
 
   return (
