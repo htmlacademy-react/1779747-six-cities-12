@@ -7,18 +7,9 @@ import FavoritesScreen from '../../pages/favorites-screen/favorites-screen';
 import LoginScreen from '../../pages/login-screen/login-screen';
 import RoomScreen from '../../pages/room-screen/room-screen';
 import NotFoundScreen from '../../pages/not-found-screen/not-found-screen';
-import { Offer } from '../../types/offers';
-import { Reviews } from '../../types/reviews';
 
 
-type AppScreenProps = {
-  offersCount: number;
-  offers: Offer[];
-  reviews: Reviews[];
-  nearbyOffers: Offer[];
-}
-
-function App({offersCount, offers, reviews, nearbyOffers}:AppScreenProps): JSX.Element {
+function App(): JSX.Element {
   return (
     <HelmetProvider>
       <BrowserRouter>
@@ -26,10 +17,7 @@ function App({offersCount, offers, reviews, nearbyOffers}:AppScreenProps): JSX.E
           <Route
             path={AppRoute.Main}
             element={
-              <MainScreen
-                offersCount={offersCount}
-                offers={offers}
-              />
+              <MainScreen />
             }
           />
           <Route
@@ -42,9 +30,7 @@ function App({offersCount, offers, reviews, nearbyOffers}:AppScreenProps): JSX.E
               <PrivateRoute
                 authorizationStatus={AuthorizationStatus.Auth}
               >
-                <FavoritesScreen
-                  offers={offers}
-                />
+                <FavoritesScreen />
               </PrivateRoute>
             }
           />
@@ -54,11 +40,7 @@ function App({offersCount, offers, reviews, nearbyOffers}:AppScreenProps): JSX.E
               <PrivateRoute
                 authorizationStatus={AuthorizationStatus.Auth}
               >
-                <RoomScreen
-                  offers={offers}
-                  reviews={reviews}
-                  nearbyOffers = {nearbyOffers}
-                />
+                <RoomScreen/>
               </PrivateRoute>
             }
           />

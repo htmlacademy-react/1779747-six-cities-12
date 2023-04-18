@@ -4,10 +4,10 @@ import cn from 'classnames';
 
 type CitiesListProps = {
     activeCity: string;
-    onCity: (city: string) => void;
+    onCityChange: (city: string) => void;
   }
 
-export default function CitiesList({activeCity, onCity}: CitiesListProps){
+export default function CitiesList({activeCity, onCityChange}: CitiesListProps){
   return (
     <div className="tabs">
       <section className="locations container">
@@ -17,8 +17,7 @@ export default function CitiesList({activeCity, onCity}: CitiesListProps){
               key={city}
               className="locations__item"
               onClick={(event) => {
-                event.preventDefault();
-                onCity(city);
+                onCityChange(city);
               }}
             >
               <Link className={cn('locations__item-link tabs__item', {'tabs__item--active': city === activeCity })}

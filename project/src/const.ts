@@ -1,3 +1,5 @@
+export const OFFERS_COUNT = 4;
+
 export enum AppRoute {
     Main = '/',
     Login = '/login',
@@ -19,3 +21,5 @@ export const CITIES = [
   'Hamburg',
   'Dusseldorf'
 ];
+
+
