@@ -22,4 +22,11 @@ export const CITIES = [
   'Dusseldorf'
 ];
 
+export const SORT_TYPE = [
+  'Popular',
+  'Price: low to high',
+  'Price: high to low',
+  'Top rated first'
+];
+
 
