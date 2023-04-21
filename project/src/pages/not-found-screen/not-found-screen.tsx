@@ -2,13 +2,9 @@ import {Helmet} from 'react-helmet-async';
 import Logo from '../../components/logo/logo';
 import User from '../../components/user/user';
 import Footer from '../../components/footer/footer';
-import { resetMainCity } from '../../store/action';
-import { useAppDispatch } from '../../hooks';
 
 
 export default function NotFoundScreen(): JSX.Element {
-  const dispatch = useAppDispatch();
-  dispatch(resetMainCity());
 
   return (
     <section className="not-found-screen">

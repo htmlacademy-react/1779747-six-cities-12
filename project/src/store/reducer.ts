@@ -1,28 +1,28 @@
 import { createReducer } from '@reduxjs/toolkit';
-import { choiceCity, resetMainCity} from './action';
-import { OFFERS_COUNT, CITIES } from '../const';
+import { changeSortType, choiceCity } from './action';
+import { CITIES } from '../const';
 import { offers } from '../mocks/offers';
 import { reviews } from '../mocks/reviews';
 import { nearbyOffers } from '../mocks/nearbyOffers';
 import { Offer } from '../types/offers';
 import { Reviews } from '../types/reviews';
+import { SORT_TYPE } from '../const';
 
 
 type InitialState = {
     city: string;
     offers: Offer[];
-    offersCount: number;
     reviews: Reviews[];
     nearbyOffers: Offer[];
+    sortType: string;
   };
 
 const initialState: InitialState = {
   city: CITIES[0],
   offers: offers,
-  offersCount: OFFERS_COUNT,
   reviews: reviews,
   nearbyOffers: nearbyOffers,
-
+  sortType: SORT_TYPE[0]
 };
 
 export const reducer = createReducer(initialState, (builder) => {
@@ -30,7 +30,7 @@ export const reducer = createReducer(initialState, (builder) => {
     .addCase(choiceCity, (state, {payload}) => {
       state.city = payload;
     })
-    .addCase(resetMainCity, (state) => {
-      state.city = CITIES[0];
+    .addCase(changeSortType, (state, {payload}) => {
+      state.sortType = payload;
     });
 });

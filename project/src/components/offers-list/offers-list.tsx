@@ -1,25 +1,30 @@
-import { useState } from 'react';
 import { useAppSelector } from '../../hooks';
 import Card from '../card/card';
-import { Offer } from '../../types/offers';
+import getSortOffers from '../../utils/utils';
 
     type OfferListProps = {
-      offersList: Offer[];
       className: string;
+      onCardHandle?: (activeCardId: number | null) => void;
     }
 
-export default function OffersList({ offersList, className }: OfferListProps) {
-  const [, setCardActive] = useState <number | null> (null);
-  const offersCount = useAppSelector((state) => state.offersCount);
+export default function OffersList({ className, onCardHandle }: OfferListProps) {
+  const offers = useAppSelector((state) =>
+    (className === 'near-places') ? state.nearbyOffers : state.offers);
+
+  const sortTypeValue = useAppSelector((state) => state.sortType);
+  const activeCity = useAppSelector((state) => state.city);
+
+  const activeCityOffers = offers.filter((offer) => offer.city.name === activeCity);
+  const sortOffersList = getSortOffers(activeCityOffers, sortTypeValue);
 
   return (
     <>
-      {offersList.slice(0, offersCount).map((offer) => (
+      {sortOffersList.map((offer) => (
         <Card
           key={offer.id}
           offer={offer}
           className={className}
-          onMouseOver={setCardActive}
+          onCardHandle={onCardHandle}
         />
       ))}
     </>

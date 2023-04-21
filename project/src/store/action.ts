@@ -5,5 +5,8 @@ export const choiceCity = createAction(
   (city: string) => ({ payload: city })
 );
 
-export const resetMainCity = createAction(
-  'main/resetMainCity');
+export const changeSortType = createAction(
+  'main/changeSortType',
+  (sortType: string) => ({ payload: sortType })
+);
+
