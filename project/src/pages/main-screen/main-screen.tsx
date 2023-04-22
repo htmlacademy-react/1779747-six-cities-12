@@ -2,7 +2,7 @@ import {Helmet} from 'react-helmet-async';
 import cn from 'classnames';
 import { useAppDispatch, useAppSelector } from '../../hooks';
 import { useState } from 'react';
-import { choiceCity } from '../../store/action';
+import { choiceCity, updateOffers } from '../../store/action';
 import Logo from '../../components/logo/logo';
 import User from '../../components/user/user';
 import OffersList from '../../components/offers-list/offers-list';
@@ -18,12 +18,10 @@ export default function MainScreen(): JSX.Element {
   const offers = useAppSelector((state) => state.offers);
   const onCityChange = (city: string) => {
     dispatch(choiceCity(city));
+    dispatch(updateOffers());
   };
   const activeCityOffers = offers.filter((offer) => offer.city.name === activeCity);
-  const [selectedActiveCard, setSelectedActiveCard] = useState<number | null>(null);
-  const onCardHandle = (offerId: number | null): void => {
-    setSelectedActiveCard(offerId);
-  };
+  const [activeCard, setActiveCard] = useState<number | null>(null);
 
   return (
     <div className="page page--gray page--main">
@@ -57,7 +55,7 @@ export default function MainScreen(): JSX.Element {
                     <div className="cities__places-list places__list tabs__content">
                       <OffersList
                         className='cities'
-                        onCardHandle={onCardHandle}
+                        onMouseCardOver={setActiveCard}
                       />
                     </div>
                   </section>
@@ -66,7 +64,7 @@ export default function MainScreen(): JSX.Element {
                       city={activeCityOffers[0].city}
                       points={activeCityOffers}
                       className='cities__map'
-                      selectedPoint={selectedActiveCard}
+                      selectedPoint={activeCard}
                     />
                   </div>
                 </>
