@@ -4,18 +4,15 @@ import getSortOffers from '../../utils/utils';
 
     type OfferListProps = {
       className: string;
-      onCardHandle?: (activeCardId: number | null) => void;
+      onMouseCardOver?: (activeCardId: number | null) => void;
     }
 
-export default function OffersList({ className, onCardHandle }: OfferListProps) {
+export default function OffersList({ className, onMouseCardOver }: OfferListProps) {
   const offers = useAppSelector((state) =>
     (className === 'near-places') ? state.nearbyOffers : state.offers);
 
   const sortTypeValue = useAppSelector((state) => state.sortType);
-  const activeCity = useAppSelector((state) => state.city);
-
-  const activeCityOffers = offers.filter((offer) => offer.city.name === activeCity);
-  const sortOffersList = getSortOffers(activeCityOffers, sortTypeValue);
+  const sortOffersList = getSortOffers(offers, sortTypeValue);
 
   return (
     <>
@@ -24,7 +21,7 @@ export default function OffersList({ className, onCardHandle }: OfferListProps) 
           key={offer.id}
           offer={offer}
           className={className}
-          onCardHandle={onCardHandle}
+          onMouseCardOver={onMouseCardOver}
         />
       ))}
     </>

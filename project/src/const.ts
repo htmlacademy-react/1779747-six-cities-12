@@ -1,4 +1,5 @@
 export const OFFERS_COUNT = 4;
+export const TIMEOUT_SHOW_ERROR = 2000;
 
 export enum AppRoute {
     Main = '/',
@@ -29,4 +30,11 @@ export const SORT_TYPE = [
   'Top rated first'
 ];
 
+export enum APIRoute {
+  Offers = '/hotels',
+  Favorite = '/favorite',
+  Comments = '/comments',
+  Login = '/login',
+  Logout = '/logout'
+}
 
