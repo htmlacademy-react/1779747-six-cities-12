@@ -1,5 +1,5 @@
 import { createReducer } from '@reduxjs/toolkit';
-import { changeSortType, choiceCity, updateOffers, loadOffers, requireAuthorization,
+import { changeSortType, choiceCity, loadOffers, requireAuthorization,
   setError, setOffersDataLoadingStatus } from './action';
 import { CITIES, AuthorizationStatus } from '../const';
 import { reviews } from '../mocks/reviews';
