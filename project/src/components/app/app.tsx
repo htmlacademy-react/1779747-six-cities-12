@@ -1,7 +1,7 @@
 import {Route, BrowserRouter, Routes} from 'react-router-dom';
 import {HelmetProvider} from 'react-helmet-async';
 import {useAppSelector} from '../../hooks';
-import {AppRoute, AuthorizationStatus} from '../../const';
+import {AppRoute} from '../../const';
 import PrivateRoute from '../private-route/private-route';
 import MainScreen from '../../pages/main-screen/main-screen';
 import FavoritesScreen from '../../pages/favorites-screen/favorites-screen';
@@ -13,9 +13,9 @@ import LoadingScreen from '../../pages/loading-screen/loading-screen';
 
 function App(): JSX.Element {
   const authorizationStatus = useAppSelector((state) => state.authorizationStatus);
-  const isOffersDataLoading = useAppSelector((state) => state.offers);
+  const isOffersDataLoading = useAppSelector((state) => state.isOffersDataLoading);
 
-  if (authorizationStatus === AuthorizationStatus.Unknown || !isOffersDataLoading) {
+  if (isOffersDataLoading) {
     return (
       <LoadingScreen />
     );
@@ -38,7 +38,7 @@ function App(): JSX.Element {
             path={AppRoute.Favorites}
             element={
               <PrivateRoute
-                authorizationStatus={AuthorizationStatus.Auth}
+                authorizationStatus={authorizationStatus}
               >
                 <FavoritesScreen />
               </PrivateRoute>
@@ -48,7 +48,7 @@ function App(): JSX.Element {
             path={AppRoute.Room}
             element={
               <PrivateRoute
-                authorizationStatus={AuthorizationStatus.Auth}
+                authorizationStatus={authorizationStatus}
               >
                 <RoomScreen/>
               </PrivateRoute>
