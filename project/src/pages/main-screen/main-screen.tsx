@@ -2,7 +2,7 @@ import {Helmet} from 'react-helmet-async';
 import cn from 'classnames';
 import { useAppDispatch, useAppSelector } from '../../hooks';
 import { useState } from 'react';
-import { choiceCity, updateOffers } from '../../store/action';
+import { choiceCity } from '../../store/main-data/main-data';
 import Logo from '../../components/logo/logo';
 import User from '../../components/user/user';
 import OffersList from '../../components/offers-list/offers-list';
@@ -10,15 +10,16 @@ import Map from '../../components/map/map';
 import CitiesList from '../../components/cities-list/cities-list';
 import MainEmpty from '../../components/main-empty/main-empty';
 import Sort from '../../components/sort/sort';
+import { getChoiceCity } from '../../store/main-data/main-data-selectors';
+import { getOffersData } from '../../store/offers-data/offers-data-selectors';
 
 
 export default function MainScreen(): JSX.Element {
   const dispatch = useAppDispatch();
-  const activeCity = useAppSelector((state) => state.city);
-  const offers = useAppSelector((state) => state.offers);
+  const activeCity = useAppSelector(getChoiceCity);
+  const offers = useAppSelector(getOffersData);
   const onCityChange = (city: string) => {
     dispatch(choiceCity(city));
-    dispatch(updateOffers());
   };
   const activeCityOffers = offers.filter((offer) => offer.city.name === activeCity);
   const [activeCard, setActiveCard] = useState<number | null>(null);

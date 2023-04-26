@@ -7,12 +7,14 @@ import CommentsForm from '../../components/commets-form/comments-form';
 import ReviewsList from '../../components/reviews-list/reviews-list';
 import Map from '../../components/map/map';
 import OffersList from '../../components/offers-list/offers-list';
+import { getOffersData } from '../../store/offers-data/offers-data-selectors';
+import { getNearbyOffers, getReviews } from '../../store/room-data/room-data.selectors';
 
 
 export default function RoomScreen(): JSX.Element {
-  const offers = useAppSelector((state) => state.offers);
-  const reviews = useAppSelector((state) => state.reviews);
-  const nearbyOffers = useAppSelector((state) => state.nearbyOffers);
+  const offers = useAppSelector(getOffersData);
+  const reviews = useAppSelector(getReviews);
+  const nearbyOffers = useAppSelector(getNearbyOffers);
   const { id } = useParams();
   const currentPointOffer = offers.find((offer) => offer.id === Number(id));
   if (currentPointOffer === undefined) {

@@ -3,10 +3,11 @@ import { useAppSelector } from '../../hooks';
 import Logo from '../../components/logo/logo';
 import User from '../../components/user/user';
 import FavoritesCard from '../../components/favorites-card/favorites-card';
+import { getOffersData } from '../../store/offers-data/offers-data-selectors';
 
 
 export default function FavoritesScreen(): JSX.Element {
-  const offers = useAppSelector((state) => state.offers);
+  const offers = useAppSelector(getOffersData);
 
   const favoriteSortList = offers.filter((offer) => offer.isFavorite);
   const citiesSortLIst = Array.from(new Set(favoriteSortList.map((i) => i.city.name)));

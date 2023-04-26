@@ -1,6 +1,9 @@
 import { useAppSelector } from '../../hooks';
 import Card from '../card/card';
 import getSortOffers from '../../utils/utils';
+import { getNearbyOffers } from '../../store/room-data/room-data.selectors';
+import { getOffersData } from '../../store/offers-data/offers-data-selectors';
+import { getSortType } from '../../store/main-data/main-data-selectors';
 
     type OfferListProps = {
       className: string;
@@ -8,10 +11,11 @@ import getSortOffers from '../../utils/utils';
     }
 
 export default function OffersList({ className, onMouseCardOver }: OfferListProps) {
-  const offers = useAppSelector((state) =>
-    (className === 'near-places') ? state.nearbyOffers : state.offers);
+  const offers = useAppSelector(
+    (className === 'near-places') ? getNearbyOffers : getOffersData
+  );
 
-  const sortTypeValue = useAppSelector((state) => state.sortType);
+  const sortTypeValue = useAppSelector(getSortType);
   const sortOffersList = getSortOffers(offers, sortTypeValue);
 
   return (
