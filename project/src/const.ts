@@ -1,5 +1,4 @@
 export const OFFERS_COUNT = 4;
-export const TIMEOUT_SHOW_ERROR = 2000;
 
 export enum AppRoute {
     Main = '/',
@@ -37,4 +36,10 @@ export enum APIRoute {
   Login = '/login',
   Logout = '/logout'
 }
-
+export enum NameSpace {
+  User = 'USER',
+  Offers = 'OFFERS',
+  Main = 'MAIN',
+  Error = 'ERROR',
+  Room = 'ROOM'
+}

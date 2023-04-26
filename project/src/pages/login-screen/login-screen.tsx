@@ -17,7 +17,9 @@ export default function LoginScreen(): JSX.Element{
   const navigate = useNavigate();
 
   const onSubmit = (authData: AuthData) => {
-    dispatch(loginAction(authData));
+    dispatch(loginAction(authData)).then(() => {
+      navigate(AppRoute.Main);
+    });
   };
 
   const handleSubmit = (evt: FormEvent<HTMLFormElement>) => {
@@ -27,7 +29,6 @@ export default function LoginScreen(): JSX.Element{
         login: loginRef.current.value,
         password: passwordRef.current.value,
       });
-      navigate(AppRoute.Main);
     }
   };
 
@@ -59,7 +60,8 @@ export default function LoginScreen(): JSX.Element{
                 <input
                   ref={loginRef}
                   className="login__input form__input"
-                  type="email" name="email"
+                  type="email"
+                  name="email"
                   placeholder="Email"
                   required
                 />
@@ -69,7 +71,9 @@ export default function LoginScreen(): JSX.Element{
                 <input
                   ref={passwordRef}
                   className="login__input form__input"
-                  type="password" name="password"
+                  type="password"
+                  name="password"
+                  pattern="^\w*(?=\w*\d)(?=\w*[A-Za-z])\w*$"
                   placeholder="Password"
                   title="Пароль должен содержать не менее одной цифры и буквы"
                   required
