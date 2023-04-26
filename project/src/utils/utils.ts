@@ -1,6 +1,5 @@
 import { Offer } from '../types/offers';
 
-//TODO переделать функцию
 
 export default function getSortOffers (offers: Offer[], sortType: string){
   switch (sortType) {
@@ -13,6 +12,5 @@ export default function getSortOffers (offers: Offer[], sortType: string){
     default:
       return offers;
   }
-
 
 }

@@ -2,12 +2,13 @@ import {Link} from 'react-router-dom';
 import {useAppDispatch, useAppSelector} from '../../hooks';
 import { logoutAction } from '../../store/api-action';
 import {AppRoute, AuthorizationStatus} from '../../const';
+import { getAuthorizationStatus, getUserData } from '../../store/user-process/user-process-selectors';
 
 
 export default function User(): JSX.Element {
   const dispatch = useAppDispatch();
-  const userData = useAppSelector((state) => state.userData);
-  const authorizationStatus = useAppSelector((state) => state.authorizationStatus);
+  const userData = useAppSelector(getUserData);
+  const authorizationStatus = useAppSelector(getAuthorizationStatus);
 
   return (
     <nav className="header__nav">
@@ -18,7 +19,7 @@ export default function User(): JSX.Element {
               <Link className="header__nav-link header__nav-link--profile" to= {AppRoute.Favorites}>
                 <div
                   className="header__avatar-wrapper user__avatar-wrapper"
-                  style= {{backgroundImage: `url(${userData?.avatarUrl})`}}
+                  style= {{backgroundImage: `url(${userData.avatarUrl})`}}
                 >
                 </div>
                 <span className="header__user-name user__name">{userData.email}</span>
