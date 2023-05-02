@@ -1,11 +1,11 @@
 import {createSlice, PayloadAction} from '@reduxjs/toolkit';
 import { MainData } from '../../types/state';
-import {NameSpace, CITIES, SORT_TYPE} from '../../const';
+import {NameSpace, CITIES, SORT_TYPES} from '../../const';
 
 
 export const initialState: MainData = {
   city: CITIES[0],
-  sortType: SORT_TYPE[0],
+  sortType: SORT_TYPES[0],
 };
 
 export const mainData = createSlice({

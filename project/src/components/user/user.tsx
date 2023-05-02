@@ -3,12 +3,14 @@ import {useAppDispatch, useAppSelector} from '../../hooks';
 import { logoutAction } from '../../store/api-action';
 import {AppRoute, AuthorizationStatus} from '../../const';
 import { getAuthorizationStatus, getUserData } from '../../store/user-process/user-process-selectors';
+import { getFavorites } from '../../store/favorites-data/favorites-data-selectors';
 
 
 export default function User(): JSX.Element {
   const dispatch = useAppDispatch();
   const userData = useAppSelector(getUserData);
   const authorizationStatus = useAppSelector(getAuthorizationStatus);
+  const favoritesData = useAppSelector(getFavorites);
 
   return (
     <nav className="header__nav">
@@ -23,7 +25,7 @@ export default function User(): JSX.Element {
                 >
                 </div>
                 <span className="header__user-name user__name">{userData.email}</span>
-                <span className="header__favorite-count">3</span>
+                <span className="header__favorite-count">{favoritesData.length}</span>
               </Link>
             </li>
             <li className="header__nav-item">

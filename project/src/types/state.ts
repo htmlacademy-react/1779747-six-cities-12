@@ -1,5 +1,5 @@
 import { store } from '../store/index';
-import { AuthorizationStatus } from '../const';
+import { AuthorizationStatus, SendStatus } from '../const';
 import { UserData } from './user-data';
 import { Offer } from '../types/offers';
 import { Reviews } from '../types/reviews';
@@ -25,10 +25,15 @@ export type ErrorData = {
  }
 
 export type RoomData = {
-  reviews: Reviews[];
+    sendStatus: SendStatus;
+    offerInRoom: Offer | null;
+    reviews: Reviews[];
     nearbyOffers: Offer[];
  }
 
+export type FavoritesData = {
+  favorites: Offer[];
+ }
 export type State = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;
 

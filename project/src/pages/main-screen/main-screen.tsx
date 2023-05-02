@@ -56,6 +56,7 @@ export default function MainScreen(): JSX.Element {
                     <div className="cities__places-list places__list tabs__content">
                       <OffersList
                         className='cities'
+                        offers={activeCityOffers}
                         onMouseCardOver={setActiveCard}
                       />
                     </div>

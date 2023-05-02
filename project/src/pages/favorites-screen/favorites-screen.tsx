@@ -3,17 +3,20 @@ import { useAppSelector } from '../../hooks';
 import Logo from '../../components/logo/logo';
 import User from '../../components/user/user';
 import FavoritesCard from '../../components/favorites-card/favorites-card';
-import { getOffersData } from '../../store/offers-data/offers-data-selectors';
+import { getFavorites } from '../../store/favorites-data/favorites-data-selectors';
+import Footer from '../../components/footer/footer';
+import FavoritesEmpty from '../../components/favorites-empty/favorites-empty';
 
 
 export default function FavoritesScreen(): JSX.Element {
-  const offers = useAppSelector(getOffersData);
+  const favoriteOffers = useAppSelector(getFavorites);
 
-  const favoriteSortList = offers.filter((offer) => offer.isFavorite);
+  const favoriteSortList = favoriteOffers.filter((offer) => offer.isFavorite);
   const citiesSortLIst = Array.from(new Set(favoriteSortList.map((i) => i.city.name)));
 
   return (
-    <section className="favorites">
+
+    <>
       <Helmet>
         <title>6 cities. Ничто так не развивает ум, как путешествие</title>
       </Helmet>
@@ -25,30 +28,35 @@ export default function FavoritesScreen(): JSX.Element {
           </div>
         </div>
       </header>
-      <main className="page__main page__main--favorites">
-        <div className="page__favorites-container container">
-          <section className="favorites">
-            <h1 className="favorites__title">Saved listing</h1>
-            <ul className="favorites__list">
 
-              {citiesSortLIst.map((city) => (
-                <li className="favorites__locations-items" key={city}>
-                  <div className="favorites__locations locations locations--current">
-                    <div className="locations__item">
-                      <a className="locations__item-link" href="/">
-                        <span>{city}</span>
-                      </a>
+      { (!favoriteOffers.length)
+        ? <FavoritesEmpty />
+        :
+        <main className="page__main page__main--favorites">
+          <div className="page__favorites-container container">
+            <section className="favorites">
+              <h1 className="favorites__title">Saved listing</h1>
+              <ul className="favorites__list">
+
+                {citiesSortLIst.map((city) => (
+                  <li className="favorites__locations-items" key={city}>
+                    <div className="favorites__locations locations locations--current">
+                      <div className="locations__item">
+                        <a className="locations__item-link" href="/">
+                          <span>{city}</span>
+                        </a>
+                      </div>
                     </div>
-                  </div>
-                  <div className="favorites__places">
-                    {favoriteSortList.filter((offer) => offer.city.name === city).map((offer) => <FavoritesCard key={offer.id} offer={offer}/>)}
-                  </div>
-                </li>
-              ))};
-            </ul>
-          </section>
-        </div>
-      </main>
-    </section>
+                    <div className="favorites__places">
+                      {favoriteSortList.filter((offer) => offer.city.name === city).map((offer) => <FavoritesCard key={offer.id} offer={offer}/>)}
+                    </div>
+                  </li>
+                ))};
+              </ul>
+            </section>
+          </div>
+        </main>}
+      <Footer />
+    </>
   );
 }
