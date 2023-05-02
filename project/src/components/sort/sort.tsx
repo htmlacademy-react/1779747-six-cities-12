@@ -2,7 +2,7 @@ import { useAppDispatch, useAppSelector } from '../../hooks';
 import cn from 'classnames';
 import { useState } from 'react';
 import { changeSortType } from '../../store/main-data/main-data';
-import { SORT_TYPE } from '../../const';
+import { SORT_TYPES } from '../../const';
 import { getSortType } from '../../store/main-data/main-data-selectors';
 
 export default function Sort () {
@@ -27,7 +27,7 @@ export default function Sort () {
         </svg>
       </span>
       <ul className={cn('places__options places__options--custom', {'places__options--opened': isOpen})}>
-        {SORT_TYPE.map((sortType) => (
+        {SORT_TYPES.map((sortType) => (
           <li
             key={sortType}
             className={cn('places__option places__option', {'places__option--active': sortType === sortTypeValue})}

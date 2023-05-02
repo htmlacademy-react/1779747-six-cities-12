@@ -13,6 +13,12 @@ export enum AuthorizationStatus {
     Unknown = 'UNKNOWN',
   }
 
+export enum SendStatus {
+    NoLooding = 'NO_LOODING',
+    Looding = 'LOODING',
+    Error = 'ERROR'
+  }
+
 export const CITIES = [
   'Paris',
   'Cologne',
@@ -22,7 +28,7 @@ export const CITIES = [
   'Dusseldorf'
 ];
 
-export const SORT_TYPE = [
+export const SORT_TYPES = [
   'Popular',
   'Price: low to high',
   'Price: high to low',
@@ -32,7 +38,7 @@ export const SORT_TYPE = [
 export enum APIRoute {
   Offers = '/hotels',
   Favorite = '/favorite',
-  Comments = '/comments',
+  Reviews = '/comments',
   Login = '/login',
   Logout = '/logout'
 }
@@ -41,5 +47,21 @@ export enum NameSpace {
   Offers = 'OFFERS',
   Main = 'MAIN',
   Error = 'ERROR',
-  Room = 'ROOM'
+  Room = 'ROOM',
+  Favorites = 'FAVORITES'
 }
+
+export const STAR_RATINGS = [
+  { value: 5, title: 'perfect' },
+  { value: 4, title: 'good' },
+  { value: 3, title: 'not bad' },
+  { value: 2, title: 'badly' },
+  { value: 1, title: 'terribly' },
+];
+
+export const COMMENT_LETTERS = {
+  min: 50,
+  max: 300,
+};
+
+
