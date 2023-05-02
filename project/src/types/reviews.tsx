@@ -14,3 +14,8 @@ export type Reviews = {
     user: User;
 };
 
+export type ReviewData = {
+    comment: string;
+    rating: number;
+    hotelId: number;
+  };
